@@ -64,11 +64,13 @@ function CameraCapture() {
   };
 
   const query = async (blob) => {
+    console.log(process.env.NEXT_PUBLIC_key);
+    
     const response = await fetch(
       'https://api-inference.huggingface.co/models/Salesforce/blip-image-captioning-large',
       {
         headers: {
-          Authorization: 'Bearer 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',
+          Authorization: process.env.NEXT_PUBLIC_key,
           'Content-Type': 'application/octet-stream',
         },
         method: 'POST',
@@ -115,7 +117,7 @@ function CameraCapture() {
         <div >
           <h1 className='p-2 text-xl'>Scene:</h1>
           <p className='p-2  font-medium  text-lg'>{caption}</p>
-          
+
           {caption && (
             <div>
             </div>
